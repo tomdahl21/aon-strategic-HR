@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   DESIGN TOKENS — source of truth for colors & type families.
+   Tailwind config (tailwind.config.ts) maps these into utility
+   classes via lib/theme.ts. Use Tailwind classes, not raw vars,
+   from inside components — these declarations exist so the
+   utilities resolve to the right values at the cascade root.
+   ============================================================ */
+:root {
+  /* Color — space-separated RGB channels so Tailwind's <alpha-value>
+     opacity modifiers (text-aon/90, bg-paper/10, etc.) compose cleanly.
+     Use via rgb(var(--token)) in raw CSS, or Tailwind utilities elsewhere. */
+  --ink: 10 10 10;
+  --ink-soft: 31 31 31;
+  --slate: 63 63 70;
+  --mute: 113 113 122;
+  --rule: 231 229 224;
+  --paper: 250 247 242; /* warm off-white */
+  --paper-2: 244 239 231; /* deeper cream */
+  --white: 255 255 255;
+  --aon: 225 25 55; /* Aon Red — kinetic accents only */
+  --aon-deep: 165 0 52; /* Burgundy — italic display emphasis */
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, system-ui, -apple-system, sans-serif;
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
+  font-size: 17px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 760px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   SCROLL REVEAL — opacity + 24px translateY, 1s ease.
+   Triggered via IntersectionObserver at 12% visibility from
+   a shared client-side controller. Respects reduced motion.
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ============================================================
+   HERO — vertical "Continue" scroll hint (1px line under the
+   label, gently nodding to encourage scroll).
+   ============================================================ */
+@keyframes scrollHint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.hero-scroll-line {
+  display: block;
+  width: 1px;
+  height: 32px;
+  background: rgb(var(--ink));
+  animation: scrollHint 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-line {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
+/* ============================================================
+   FOCUS — keyboard-visible only, single hairline ring.
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid rgb(var(--aon));
+  outline-offset: 2px;
+}
+
+/* Skip link — visually hidden until focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  z-index: 200;
+  background: rgb(var(--ink));
+  color: rgb(var(--paper));
+  padding: 12px 16px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
