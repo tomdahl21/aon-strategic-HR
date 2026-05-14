@@ -92,26 +92,29 @@ body {
 @keyframes scrollHint {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(45deg);
     opacity: 0.4;
   }
   50% {
-    transform: translateY(8px);
+    transform: translateY(4px) rotate(45deg);
     opacity: 1;
   }
 }
 
 .hero-scroll-line {
   display: block;
-  width: 1px;
-  height: 32px;
-  background: rgb(var(--ink));
+  width: 8px;
+  height: 8px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
   animation: scrollHint 2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-scroll-line {
     animation: none;
+    transform: rotate(45deg);
     opacity: 0.4;
   }
 }

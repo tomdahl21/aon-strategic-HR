@@ -5,11 +5,13 @@ import type { EngagementContent } from '@/lib/types'
 
 type Props = {
   engagement: EngagementContent
+  id?: string
+  continueHref?: string
 }
 
-export function EngagementLadder({ engagement }: Props) {
+export function EngagementLadder({ engagement, id, continueHref }: Props) {
   return (
-    <Section variant="white">
+    <Section variant="white" id={id} continueHref={continueHref}>
       <div className="mb-[80px] max-w-[880px]">
         <Eyebrow className="reveal">{engagement.eyebrow}</Eyebrow>
 

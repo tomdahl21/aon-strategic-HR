@@ -3,6 +3,7 @@ import type { ClosingContent } from '@/lib/types'
 
 type Props = {
   closing: ClosingContent
+  id?: string
 }
 
 /**
@@ -11,9 +12,9 @@ type Props = {
  * Renders the section directly because the vertical rhythm is taller than the
  * default Section variant (clamp(120px, 18vh, 200px) top, 60px bottom).
  */
-export function ClosingConversation({ closing }: Props) {
+export function ClosingConversation({ closing, id }: Props) {
   return (
-    <section className="bg-paper px-gutter pb-[60px] pt-[clamp(120px,18vh,200px)]">
+    <section id={id} className="bg-paper px-gutter pb-[60px] pt-[clamp(120px,18vh,200px)]">
       <div className="mx-auto max-w-hero">
         <Eyebrow className="reveal">{closing.eyebrow}</Eyebrow>
 

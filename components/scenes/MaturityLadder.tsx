@@ -5,6 +5,8 @@ import type { LadderContent } from '@/lib/types'
 
 type Props = {
   content: LadderContent
+  id?: string
+  continueHref?: string
 }
 
 /**
@@ -19,9 +21,9 @@ const GAIN_TINTS = [
   'rgb(var(--aon))',
 ] as const
 
-export function MaturityLadder({ content }: Props) {
+export function MaturityLadder({ content, id, continueHref }: Props) {
   return (
-    <Section variant="ink" tall>
+    <Section variant="ink" tall id={id} continueHref={continueHref}>
       <Eyebrow tone="on-dark" className="reveal">
         {content.eyebrow}
       </Eyebrow>

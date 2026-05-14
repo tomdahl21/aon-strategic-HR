@@ -5,11 +5,13 @@ import type { LandscapeContent } from '@/lib/types'
 
 type Props = {
   content: LandscapeContent
+  id?: string
+  continueHref?: string
 }
 
-export function AccelLandscape({ content }: Props) {
+export function AccelLandscape({ content, id, continueHref }: Props) {
   return (
-    <Section variant="paper">
+    <Section variant="paper" id={id} continueHref={continueHref}>
       <div className="mb-[80px] max-w-[760px]">
         <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
 

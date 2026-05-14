@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { SectionContinue } from '@/components/primitives/SectionContinue'
 
 type Variant = 'white' | 'paper' | 'paper2' | 'ink'
 
@@ -13,6 +14,12 @@ type Props = {
   narrow?: boolean
   /** Drop the inner max-width wrapper — caller manages layout themselves. */
   bare?: boolean
+  /** Anchor id for in-page navigation between sections. */
+  id?: string
+  /** When set, render a "Continue" cue at the bottom-right linking to this href. */
+  continueHref?: string
+  /** Override the Continue label. */
+  continueLabel?: string
   className?: string
   children: ReactNode
 }
@@ -30,6 +37,9 @@ export function Section({
   tall = false,
   narrow = false,
   bare = false,
+  id,
+  continueHref,
+  continueLabel,
   className = '',
   children,
 }: Props) {
@@ -42,13 +52,33 @@ export function Section({
     .filter(Boolean)
     .join(' ')
 
+  const continueTone = variant === 'ink' ? 'dark' : 'light'
+
+  const continueEl = continueHref ? (
+    <div className="mt-[clamp(48px,8vh,96px)] flex justify-end">
+      <SectionContinue
+        href={continueHref}
+        label={continueLabel}
+        tone={continueTone}
+      />
+    </div>
+  ) : null
+
   if (bare) {
-    return <Tag className={outer}>{children}</Tag>
+    return (
+      <Tag id={id} className={outer}>
+        {children}
+        {continueEl}
+      </Tag>
+    )
   }
 
   return (
-    <Tag className={outer}>
-      <div className={`mx-auto ${narrow ? 'max-w-narrow' : 'max-w-content'}`}>{children}</div>
+    <Tag id={id} className={outer}>
+      <div className={`mx-auto ${narrow ? 'max-w-narrow' : 'max-w-content'}`}>
+        {children}
+        {continueEl}
+      </div>
     </Tag>
   )
 }

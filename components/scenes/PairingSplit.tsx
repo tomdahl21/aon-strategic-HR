@@ -8,11 +8,13 @@ const ROMAN = ['i', 'ii', 'iii', 'iv', 'v'] as const
 
 type Props = {
   pairing: PairingContent
+  id?: string
+  continueHref?: string
 }
 
-export function PairingSplit({ pairing }: Props) {
+export function PairingSplit({ pairing, id, continueHref }: Props) {
   return (
-    <Section variant="paper2">
+    <Section variant="paper2" id={id} continueHref={continueHref}>
       <div className="mb-[80px] max-w-[820px]">
         <Eyebrow className="reveal">{pairing.eyebrow}</Eyebrow>
         <DisplayHeading className="reveal">

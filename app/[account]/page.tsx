@@ -9,6 +9,7 @@ import { PairingSplit } from '@/components/scenes/PairingSplit'
 import { ProvocationBlock } from '@/components/scenes/ProvocationBlock'
 import { DisplayHeading } from '@/components/primitives/DisplayHeading'
 import { Eyebrow } from '@/components/primitives/Eyebrow'
+import { PhotoPlate } from '@/components/primitives/PhotoPlate'
 import { Section } from '@/components/primitives/Section'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { TopBar } from '@/components/layout/TopBar'
@@ -16,6 +17,8 @@ import { abbvie } from '@/content/abbvie'
 import { ladder } from '@/content/shared/ladder'
 import { landscape } from '@/content/shared/landscape'
 import { matrix, matrixHead } from '@/content/shared/matrix'
+import laptopPhoto from '@/img/photos/slalom-people01.jpg'
+import conversationPhoto from '@/img/photos/slalom-people02.jpg'
 import type { AccountContent } from '@/lib/types'
 
 const ACCOUNTS: Record<string, AccountContent> = {
@@ -42,11 +45,27 @@ export default async function AccountPage({ params }: { params: Params }) {
 
       <main id="main">
         <HeroAnchor hero={content.hero} />
-        <ProvocationBlock provocation={content.provocation} />
-        <AccelLandscape content={landscape} />
-        <MaturityLadder content={ladder} />
 
-        <Section variant="white">
+        <div className="relative z-0 -mt-[clamp(220px,30vh,340px)]">
+          <PhotoPlate
+            id="after-hero"
+            src={laptopPhoto}
+            alt="Slalom team members working together in a studio."
+            height="plate"
+            objectPosition="38% -8%"
+            priority
+          />
+        </div>
+
+        <ProvocationBlock
+          provocation={content.provocation}
+          id="section-01"
+          continueHref="#section-02"
+        />
+        <AccelLandscape content={landscape} id="section-02" continueHref="#section-03" />
+        <MaturityLadder content={ladder} id="section-03" continueHref="#section-04" />
+
+        <Section variant="white" id="section-04" continueHref="#section-05">
           <div className="mb-[80px] grid items-end gap-[clamp(40px,6vw,100px)] [grid-template-columns:1.3fr_1fr] max-[760px]:grid-cols-1 max-[760px]:gap-[32px]">
             <div>
               <Eyebrow className="reveal">{matrixHead.eyebrow}</Eyebrow>
@@ -78,9 +97,20 @@ export default async function AccountPage({ params }: { params: Params }) {
           </div>
         </Section>
 
-        <PairingSplit pairing={content.pairing} />
-        <EngagementLadder engagement={content.engagement} />
-        <ClosingConversation closing={content.closing} />
+        <PairingSplit pairing={content.pairing} id="section-05" continueHref="#section-06" />
+        <EngagementLadder
+          engagement={content.engagement}
+          id="section-06"
+          continueHref="#section-07"
+        />
+        <ClosingConversation closing={content.closing} id="section-07" />
+
+        <PhotoPlate
+          src={conversationPhoto}
+          alt="Two Slalom colleagues mid-conversation."
+          height="compact"
+          objectPosition="55% 35%"
+        />
       </main>
 
       <SiteFooter meta={content.meta} siteLine={content.hero.foot.headline} />

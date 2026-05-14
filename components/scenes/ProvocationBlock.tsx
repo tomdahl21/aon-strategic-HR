@@ -6,11 +6,13 @@ import type { ProvocationContent } from '@/lib/types'
 
 type Props = {
   provocation: ProvocationContent
+  id?: string
+  continueHref?: string
 }
 
-export function ProvocationBlock({ provocation }: Props) {
+export function ProvocationBlock({ provocation, id, continueHref }: Props) {
   return (
-    <Section variant="white">
+    <Section variant="white" id={id} continueHref={continueHref}>
       <Eyebrow className="reveal">{provocation.eyebrow}</Eyebrow>
 
       <div className="grid items-start gap-[clamp(40px,6vw,100px)] [grid-template-columns:1.1fr_0.9fr] max-[760px]:grid-cols-1 max-[760px]:gap-[32px]">
