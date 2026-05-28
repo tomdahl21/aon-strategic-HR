@@ -84,7 +84,7 @@ export function MaturityMatrix({ lifecycleStages }: Props) {
               {isActive && (
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute left-0 right-0 top-0 h-[3px] bg-aon"
+                  className="pointer-events-none absolute left-0 right-0 top-0 h-[3px] bg-slalom"
                 />
               )}
               <span className="mb-[6px] block font-display text-[11px] italic tracking-[0.06em] text-mute">
@@ -116,14 +116,14 @@ export function MaturityMatrix({ lifecycleStages }: Props) {
                 'flex flex-col border-r border-rule px-[28px] py-[36px]',
                 'transition-colors duration-300 last:border-r-0 hover:bg-paper',
                 isLast
-                  ? 'bg-[linear-gradient(to_bottom,rgb(var(--white)),rgba(225,25,55,0.025))]'
+                  ? 'bg-[linear-gradient(to_bottom,rgb(var(--white)),rgba(0,70,189,0.025))]'
                   : 'bg-white',
               ].join(' ')}
             >
               <div
                 className={[
                   'mb-[6px] font-display text-[11px] italic uppercase tracking-[0.16em]',
-                  isFirst ? 'text-aon/60' : 'text-aon',
+                  isFirst ? 'text-slalom/60' : 'text-slalom',
                 ].join(' ')}
               >
                 {cell.name}

@@ -1,4 +1,4 @@
-type Tone = 'aon' | 'mute' | 'on-dark'
+type Tone = 'aon' | 'mute' | 'on-dark' | 'slalom' | 'slalom-on-dark'
 
 type Props = {
   /** Color treatment. `on-dark` softens to 90% so it sits on top of `--ink`. */
@@ -11,6 +11,10 @@ const toneClass: Record<Tone, { text: string; bar: string }> = {
   aon: { text: 'text-aon', bar: 'bg-aon' },
   mute: { text: 'text-mute', bar: 'bg-mute' },
   'on-dark': { text: 'text-aon/90', bar: 'bg-aon/90' },
+  // Slalom-blue tones for the Slalom-origin sections. Deep blue on light;
+  // the brighter blue on dark so it stays legible against --ink.
+  slalom: { text: 'text-slalom', bar: 'bg-slalom' },
+  'slalom-on-dark': { text: 'text-slalom-bright', bar: 'bg-slalom-bright' },
 }
 
 /**

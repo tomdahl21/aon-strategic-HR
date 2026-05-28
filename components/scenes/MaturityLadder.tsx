@@ -10,25 +10,27 @@ type Props = {
 }
 
 /**
- * Progressive red saturation across the five gain values — muted on the early
- * stages, full Aon Red on the late ones. Mirrors index.html `.stage:nth-child`.
+ * Progressive saturation across the five gain values — muted on the early
+ * stages, full on the late ones. This ladder is the Slalom REACTIVE→PREDICTIVE
+ * framework, so it carries Slalom blue; the bright variant keeps the numerals
+ * legible against the dark --ink section.
  */
 const GAIN_TINTS = [
-  'rgb(var(--aon) / 0.55)',
-  'rgb(var(--aon) / 0.7)',
-  'rgb(var(--aon) / 0.85)',
-  'rgb(var(--aon))',
-  'rgb(var(--aon))',
+  'rgb(var(--slalom-bright) / 0.55)',
+  'rgb(var(--slalom-bright) / 0.7)',
+  'rgb(var(--slalom-bright) / 0.85)',
+  'rgb(var(--slalom-bright))',
+  'rgb(var(--slalom-bright))',
 ] as const
 
 export function MaturityLadder({ content, id, continueHref }: Props) {
   return (
     <Section variant="ink" tall id={id} continueHref={continueHref}>
-      <Eyebrow tone="on-dark" className="reveal">
+      <Eyebrow tone="slalom-on-dark" className="reveal">
         {content.eyebrow}
       </Eyebrow>
 
-      <DisplayHeading tone="dark" className="reveal">
+      <DisplayHeading tone="dark-slalom" className="reveal">
         {content.headline.lead} <em>{content.headline.em1}</em> {content.headline.mid}{' '}
         <em>{content.headline.em2}</em>
       </DisplayHeading>

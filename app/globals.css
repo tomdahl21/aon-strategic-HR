@@ -23,6 +23,8 @@
   --white: 255 255 255;
   --aon: 225 25 55; /* Aon Red — kinetic accents only */
   --aon-deep: 165 0 52; /* Burgundy — italic display emphasis */
+  --slalom: 0 70 189; /* Slalom Blue (#0046BD) — kinetic accent, co-equal to Aon Red on light */
+  --slalom-bright: 2 123 252; /* Bright Slalom Blue (#027BFC) — emphasis on dark, hover brighten */
 }
 
 /* ============================================================
@@ -142,4 +144,85 @@ body {
   padding: 12px 16px;
   font-size: 13px;
   letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   PRINT — one section per page for PDF review/export.
+   Triggered by Chrome headless --print-to-pdf; also kicks in
+   for ad-hoc browser Print → Save as PDF.
+   ============================================================ */
+@media print {
+  /* A2 landscape — generous so each section fits one page with room to comment.
+     Explicit mm dimensions because Chrome headless doesn't always honor the
+     named keyword + orientation pair. */
+  @page {
+    size: 594mm 420mm;
+    margin: 0;
+  }
+
+  html,
+  body {
+    background: rgb(var(--paper));
+  }
+
+  /* Every top-level child of <main> starts a new page; so does the footer. */
+  main > section,
+  main > div,
+  footer {
+    break-before: page;
+    page-break-before: always;
+  }
+  main > section:first-child,
+  main > div:first-child {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  /* Keep each scene whole; if it still overflows, allow it. */
+  section,
+  .reveal {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Compress section vertical rhythm so scenes fit on one page. */
+  main > section,
+  main > div > section,
+  .py-section-y,
+  .py-section-y-tall {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  /* Don't force the hero to viewport height in print — let it be its
+     natural content height. */
+  .min-h-screen {
+    min-height: 0 !important;
+  }
+
+  /* Nullify negative margins that overlap sections on screen — they fight
+     against the per-section page-break model in print. */
+  main > * {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Snap reveal-animated content to its final state. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Drop the fixed top bar, skip link, animated scroll hint. */
+  nav[aria-label='Site'],
+  .skip-link,
+  .hero-scroll-line {
+    display: none !important;
+  }
+
+  /* Anything fixed would duplicate on every page; flatten it. */
+  .fixed {
+    position: static !important;
+  }
 }

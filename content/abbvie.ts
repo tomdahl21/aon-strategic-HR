@@ -109,7 +109,7 @@ export const abbvie: AccountContent = {
     slalom: {
       label: '— The builder',
       name: 'Slalom',
-      accent: 'neutral',
+      accent: 'slalom',
       tagline:
         'Operating-model design, agentic AI build, and the change scaffolding that turns insight into action.',
       list: [
@@ -187,11 +187,11 @@ export const abbvie: AccountContent = {
     invitationLabel: '— Your invitation',
     invitation:
       'A 30-minute conversation. No deck behind this one. The shape of a working relationship, sketched together. We are ready when you are.',
-    teamLabel: '— Your team at Aon',
+    teamLabel: '— Your team, Aon + Slalom',
     team: {
       headline:
-        'The Human Capital practice, with the partners and analytics teams that originated this work.',
-      support: 'In partnership with Slalom, our co-delivery partner for AI-enabled HR transformation.',
+        "Aon's Human Capital practice and Slalom's Adaptive Organizations team — the people who originated this work, together.",
+      support: 'The data and the build, in one room.',
     },
   },
 }

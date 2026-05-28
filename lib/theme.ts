@@ -19,6 +19,8 @@ export const colors = {
   white: 'rgb(var(--white) / <alpha-value>)',
   aon: 'rgb(var(--aon) / <alpha-value>)',
   'aon-deep': 'rgb(var(--aon-deep) / <alpha-value>)',
+  slalom: 'rgb(var(--slalom) / <alpha-value>)',
+  'slalom-bright': 'rgb(var(--slalom-bright) / <alpha-value>)',
 } as const
 
 export const fontFamily: Record<string, string[]> = {

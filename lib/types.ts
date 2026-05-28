@@ -139,8 +139,8 @@ export type SideListItem = {
 export type PairingSide = {
   label: string
   name: string
-  /** Optional class hint for color treatment (Aon side gets the red wordmark). */
-  accent?: 'aon' | 'neutral'
+  /** Color treatment for the wordmark: Aon red, Slalom blue, or plain ink. */
+  accent?: 'aon' | 'slalom' | 'neutral'
   tagline: string
   list: SideListItem[]
 }
@@ -205,4 +205,139 @@ export type AccountContent = {
   pairing: PairingContent
   engagement: EngagementContent
   closing: ClosingContent
+}
+
+/* -----------------------------------------------------------------------
+ * v2 expanded composition — content types for the eight additional scenes
+ * sourced from the Slalom Perspective deck (Mar 2026). Each lives in its
+ * own shared content file and is rendered only on the abbvie-v2 route.
+ * --------------------------------------------------------------------- */
+
+export type EditorialHeadlineSplit = {
+  lead: string
+  em1: string
+  mid: string
+  em2: string
+}
+
+/** Slide 3 — three orbits where AI shows up across HR. */
+export type FootprintColumn = {
+  ordinal: string
+  title: string
+  body: string
+}
+
+export type FootprintContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  columns: FootprintColumn[]
+}
+
+/** Slide 5 — practical use cases on an Operate Better → Transform axis. */
+export type ApplicationsColumn = {
+  ordinal: string
+  title: string
+  subtitle: string
+  items: string[]
+}
+
+export type ApplicationsContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  columns: ApplicationsColumn[]
+  axisLeft: string
+  axisRight: string
+}
+
+/** Slides 6 + 17 — same shape, different lens (capability vs stakeholder). */
+export type LensStageHead = {
+  /** Short uppercase tag — REACTIVE, PROACTIVE, INTERACTIVE, PREDICTIVE. */
+  name: string
+  /** Efficiency lift band shown under the stage name. */
+  gainBand: string
+}
+
+export type LensRow = {
+  label: string
+  /** One cell per stage head, in stage order. */
+  cells: string[]
+}
+
+export type LensContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  /** Note that maps the 4-stage vocabulary onto the 5-stage Ladder. */
+  mappingNote: string
+  stages: LensStageHead[]
+  rows: LensRow[]
+}
+
+/** Slides 7 + 10 — Data Readiness offering as a foundational scene. */
+export type FoundationPhase = {
+  ordinal: string
+  name: string
+  description: string
+}
+
+export type FoundationFitItem = {
+  lead: string
+  body: string
+}
+
+export type FoundationContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  phases: FoundationPhase[]
+  whenLabel: string
+  whenItems: FoundationFitItem[]
+  whenNotLabel: string
+  whenNotItems: FoundationFitItem[]
+}
+
+/** Slide 11 — nine AI-data anti-patterns. */
+export type AntiPattern = {
+  name: string
+  body: string
+}
+
+export type AntiPatternsContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  patterns: AntiPattern[]
+}
+
+/** Slide 14 — four CHRO organizing questions. */
+export type OrganizingQuestion = {
+  num: string
+  question: string
+  followUp: string
+}
+
+export type OrganizingQuestionsContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  questions: OrganizingQuestion[]
+}
+
+/** Slide 20 — Experiment → Enhanced → Enabled → Evolving adoption arc. */
+export type JourneyStage = {
+  ordinal: string
+  name: string
+  focus: string
+  outcome: string
+  gain: string
+}
+
+export type AdoptionJourneyContent = {
+  eyebrow: string
+  headline: EditorialHeadlineSplit
+  lede: string
+  stages: JourneyStage[]
+  liftLabel: string
 }

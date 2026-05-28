@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aon + Slalom | 30-Min Intro Deck — Strawman Outline</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --aon-red: #E11937;
+            --aon-dark: #1a1a2e;
+            --slalom-blue: #0066CC;
+            --gray-50: #fafbfc;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-500: #adb5bd;
+            --gray-600: #6c757d;
+            --gray-700: #495057;
+            --gray-800: #343a40;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.65;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: white;
+            border-bottom: 1px solid var(--gray-200);
+            page-break-after: always;
+        }
+
+        /* ---------- COVER ---------- */
+        .slide-cover {
+            background: linear-gradient(135deg, var(--aon-dark) 0%, #2d2d4a 100%);
+            color: white;
+            text-align: center;
+        }
+        .slide-cover .partnership {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 2.5rem;
+        }
+        .slide-cover .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 8px;
+            color: white;
+        }
+        .logo-aon { background: var(--aon-red); }
+        .logo-slalom { background: var(--slalom-blue); }
+        .slide-cover .plus { font-size: 2rem; opacity: 0.5; }
+        .slide-cover h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            line-height: 1.15;
+        }
+        .slide-cover .eyebrow {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.7;
+            margin-bottom: 1.5rem;
+        }
+        .slide-cover .subtitle {
+            font-size: 1.35rem;
+            opacity: 0.85;
+            margin-top: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        .slide-cover .meta {
+            font-size: 1rem;
+            opacity: 0.6;
+            margin-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slide-cover .meta strong { color: var(--aon-red); font-weight: 600; }
+
+        /* ---------- HEADERS ---------- */
+        .slide-num {
+            font-size: 0.85rem;
+            color: var(--aon-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        h2 {
+            font-size: 2.4rem;
+            color: var(--aon-dark);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        .working-title {
+            font-size: 1.4rem;
+            color: var(--gray-600);
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--aon-red);
+            display: inline-block;
+        }
+        h3 {
+            font-size: 1.25rem;
+            color: var(--aon-dark);
+            margin: 1.5rem 0 0.75rem;
+            font-weight: 600;
+        }
+
+        /* ---------- INTENT BLOCK ---------- */
+        .intent {
+            background: var(--gray-100);
+            border-left: 4px solid var(--slalom-blue);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            color: var(--gray-700);
+        }
+        .intent strong { color: var(--slalom-blue); }
+
+        /* ---------- CONTENT BLOCKS ---------- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 1.5rem;
+        }
+        .block {
+            background: var(--gray-100);
+            padding: 1.5rem 1.75rem;
+            border-radius: 10px;
+            border-top: 3px solid var(--aon-red);
+        }
+        .block h4 {
+            font-size: 1.05rem;
+            color: var(--aon-red);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        .block p, .block li { font-size: 1rem; color: var(--gray-700); }
+        .block ul { margin-left: 1.25rem; margin-top: 0.5rem; }
+        .block li { margin-bottom: 0.6rem; }
+        .block li strong { color: var(--aon-dark); }
+
+        .full-block {
+            background: var(--gray-100);
+            padding: 1.5rem 1.75rem;
+            border-radius: 10px;
+            border-top: 3px solid var(--aon-red);
+            margin-top: 1.5rem;
+        }
+
+        /* ---------- AUDIENCE PILLS ---------- */
+        .audience-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 1rem;
+        }
+        .audience {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: 10px;
+            padding: 1.25rem;
+        }
+        .audience-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+        .tag-chro { background: #fce8eb; color: var(--aon-red); }
+        .tag-tr   { background: #e8f0fc; color: var(--slalom-blue); }
+        .tag-cio  { background: #efeaf5; color: #5d3a8e; }
+        .audience p { font-size: 0.95rem; color: var(--gray-700); }
+
+        /* ---------- CAPABILITY TABLE (Slide 2) ---------- */
+        .capability-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .capability-table th {
+            padding: 1.1rem 1.4rem;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: white;
+        }
+        .capability-table th.aon { background: var(--aon-red); }
+        .capability-table th.slalom { background: var(--slalom-blue); }
+        .capability-table td {
+            padding: 1rem 1.4rem;
+            border-bottom: 1px solid var(--gray-200);
+            background: white;
+            font-size: 0.98rem;
+            vertical-align: top;
+            width: 50%;
+        }
+        .capability-table td:first-child { border-right: 1px solid var(--gray-200); }
+        .capability-table tr:last-child td { border-bottom: none; }
+        .capability-table td strong { color: var(--aon-dark); }
+
+        .joint-callout {
+            background: linear-gradient(135deg, var(--aon-dark) 0%, #2d2d4a 100%);
+            color: white;
+            padding: 1.75rem 2rem;
+            border-radius: 12px;
+            margin-top: 1.75rem;
+        }
+        .joint-callout h4 {
+            color: white;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            opacity: 0.85;
+        }
+        .joint-callout p { font-size: 1.05rem; opacity: 0.95; line-height: 1.6; }
+        .joint-callout p + p { margin-top: 0.75rem; }
+        .joint-callout em { color: var(--aon-red); font-style: normal; font-weight: 600; }
+
+        /* ---------- 3-STEP LADDER (Slide 3) ---------- */
+        .ladder {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+        .ladder-step {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            border-top: 4px solid var(--aon-red);
+        }
+        .ladder-num {
+            position: absolute;
+            top: -18px;
+            left: 1.5rem;
+            background: var(--aon-red);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        .ladder-step h4 {
+            color: var(--aon-dark);
+            font-size: 1.15rem;
+            margin: 0.5rem 0 0.4rem;
+        }
+        .ladder-step .timeframe {
+            font-size: 0.8rem;
+            color: var(--slalom-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .ladder-step p { font-size: 0.95rem; color: var(--gray-700); }
+
+        /* ---------- PROMPTS BOX ---------- */
+        .prompts-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 1.75rem 2rem;
+            border-radius: 12px;
+            margin-top: 1.75rem;
+            border-left: 4px solid var(--slalom-blue);
+        }
+        .prompts-box h4 {
+            color: var(--slalom-blue);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .prompts-box ul { list-style: none; padding: 0; }
+        .prompts-box li {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed var(--gray-300);
+            font-size: 0.98rem;
+            color: var(--gray-700);
+        }
+        .prompts-box li:last-child { border-bottom: none; }
+        .prompts-box li strong { color: var(--aon-dark); }
+
+        /* ---------- VISUAL NOTE ---------- */
+        .visual-note {
+            background: #fffbe6;
+            border: 1px dashed #d9b300;
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #614c00;
+            margin-top: 1.25rem;
+        }
+        .visual-note strong { color: #5b4400; }
+
+        /* ---------- PRODUCTION NOTES SECTION ---------- */
+        .slide-notes { background: var(--gray-50); }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 1.5rem;
+        }
+        .notes-card {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .notes-card h3 {
+            margin-top: 0;
+            color: var(--aon-red);
+            font-size: 1.15rem;
+        }
+        .notes-card ul { margin-left: 1.25rem; }
+        .notes-card li { margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--gray-700); }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .matrix-table th {
+            background: var(--aon-dark);
+            color: white;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .matrix-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: top;
+        }
+        .matrix-table tr:nth-child(even) td { background: var(--gray-100); }
+        .matrix-table td:first-child { font-weight: 600; color: var(--aon-dark); }
+
+        .accounts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        .account-card {
+            background: white;
+            padding: 1.25rem 1.5rem;
+            border-radius: 10px;
+            border-top: 3px solid var(--slalom-blue);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .account-card h4 {
+            font-size: 1.1rem;
+            color: var(--aon-dark);
+            margin-bottom: 0.5rem;
+        }
+        .account-card p { font-size: 0.9rem; color: var(--gray-700); }
+
+        .open-decisions {
+            background: white;
+            border-left: 4px solid var(--aon-red);
+            padding: 1.5rem 1.75rem;
+            border-radius: 0 10px 10px 0;
+            margin-top: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .open-decisions h3 {
+            color: var(--aon-red);
+            margin-top: 0;
+        }
+        .open-decisions ol { margin-left: 1.5rem; }
+        .open-decisions li { margin-bottom: 0.6rem; font-size: 0.98rem; color: var(--gray-700); }
+
+        .nav-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 8px 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+            font-size: 0.85rem;
+        }
+        .nav-bar a {
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+        .nav-bar a:hover {
+            background: var(--aon-red);
+            color: white;
+        }
+
+        @media print {
+            .nav-bar { display: none; }
+            .slide { min-height: auto; padding: 40px; }
+        }
+
+        @media (max-width: 900px) {
+            .slide { padding: 40px 24px; }
+            .content-grid, .notes-grid, .audience-row, .ladder, .accounts-grid { grid-template-columns: 1fr; }
+            .slide-cover h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <a href="#cover">Cover</a>
+        <a href="#slide1">1</a>
+        <a href="#slide2">2</a>
+        <a href="#slide3">3</a>
+        <a href="#notes">Notes</a>
+    </nav>
+
+    <!-- COVER -->
+    <section class="slide slide-cover" id="cover">
+        <div class="container">
+            <div class="partnership">
+                <div class="logo logo-aon">Aon</div>
+                <span class="plus">+</span>
+                <div class="logo logo-slalom">Slalom</div>
+            </div>
+            <div class="eyebrow">30-Minute Intro Deck</div>
+            <h1>People-first, process-led<br>AI transformation</h1>
+            <p class="subtitle">A 3-slide strawman outline for short, targeted intro conversations with joint-client targets — AbbVie, United, CDW.</p>
+            <div class="meta">
+                <strong>Owner:</strong> Yousuf (drafts straw-man) → Julie's design team (polish to Slalom/Aon co-brand template)<br>
+                <strong>Source:</strong> AI Sensitivity Analysis — Aon &amp; Slalom v3 (slide 42 anchor) · Marinus's HR provocation slides · Slalom Adaptive Organizations · Apr 15 GTM Regroup
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 1 -->
+    <section class="slide" id="slide1">
+        <div class="container">
+            <div class="slide-num">Slide 1 — A Provocative POV on AI in HR</div>
+            <h2>"AI is forcing HR to rewire — not just digitize."</h2>
+            <p class="working-title">Earn 30 minutes by leading with a thesis, not a pitch.</p>
+
+            <div class="intent">
+                <strong>Strategic intent:</strong> Open with a point of view that earns 30 minutes of attention. Establish that we are <em>not</em> selling tech — we are reframing the operating model. Position both firms as having a thesis.
+            </div>
+
+            <div class="content-grid">
+                <div class="block">
+                    <h4>The Headline Tension</h4>
+                    <p>HR is now one of the largest functional headcount blocks in most enterprises, <strong>and</strong> the function with the most uneven AI deployment. Pockets of progress, no unifying logic.</p>
+                    <p style="margin-top:0.6rem; font-size: 0.9rem; color: var(--gray-600);"><em>(Marinus tour insight + Silicon Valley reflection.)</em></p>
+                </div>
+                <div class="block">
+                    <h4>Why Now</h4>
+                    <p>Clients are moving from <em>"what does AI mean for us?"</em> to <em>"what do we actually do Monday morning?"</em> The conversation must land tactically — fast.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2rem;">The Provocation — pick one per audience</h3>
+            <div class="audience-row">
+                <div class="audience">
+                    <span class="audience-tag tag-chro">CHRO</span>
+                    <p>The 3-legged HR stool (CoE / HRBP / Shared Services) collapses to <strong>2</strong>. AI absorbs much of what CoE has done; HRBPs become the integrated front line. <em>(Marinus's Dave Ulrich provocation slide.)</em></p>
+                </div>
+                <div class="audience">
+                    <span class="audience-tag tag-tr">Total Rewards</span>
+                    <p>Total Rewards is the <strong>natural anchor</strong> — comp, benefits, recognition all sit on data AI can reason over. We've fielded ~6 "what should TR look like in the future?" requests in the past few weeks. Start here, scale out.</p>
+                </div>
+                <div class="audience">
+                    <span class="audience-tag tag-cio">CIO</span>
+                    <p>Workforce enablement is the <strong>"squishy middle"</strong> between strategy and tech implementation that nobody is addressing. That's where deployment fails. <em>(Ex-Deloitte consulting head endorsement.)</em></p>
+                </div>
+            </div>
+
+            <div class="visual-note">
+                <strong>Suggested visual:</strong> Single full-bleed conceptual graphic — either (a) the 2-pillar HR model from Marinus's deck, or (b) an "HR as % of headcount + emerging skills" data callout. Minimal text, one pull-quote.<br>
+                <strong>Slot for:</strong> A single proof point — e.g., the Bahamian insurer CIO quote from Miami tour ("best session I've ever had on this topic").
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2 -->
+    <section class="slide" id="slide2">
+        <div class="container">
+            <div class="slide-num">Slide 2 — How Aon + Slalom Partner</div>
+            <h2>"Two firms, one operating system for AI-enabled HR."</h2>
+            <p class="working-title">A real partnership — complementary, non-overlapping, joint accountability.</p>
+
+            <div class="intent">
+                <strong>Strategic intent:</strong> Show this is a <em>real</em> partnership with complementary, non-overlapping capabilities — not a logo lock-up. Make the joint value prop tangible enough that the client sees what they get from each side.
+            </div>
+
+            <table class="capability-table">
+                <thead>
+                    <tr>
+                        <th class="aon">Aon brings</th>
+                        <th class="slalom">Slalom brings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>AI Sensitivity Analysis</strong> — quantitative impact at job/task level</td>
+                        <td><strong>Tech stack assessment</strong> — current state of HR tech, data, integration</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Job reimagination &amp; job architecture</strong> — what the role <em>becomes</em></td>
+                        <td><strong>Adaptive Organizations</strong> for the CHRO — operating model design</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skills frameworks &amp; pay/comp implications</strong></td>
+                        <td><strong>Implementation &amp; change</strong> — design, build, deliver with the client</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Benefits, governance, comp data depth</strong> (Megan's team for governance)</td>
+                        <td><strong>Data governance &amp; strategy</strong> — execution arm if needed</td>
+                    </tr>
+                    <tr>
+                        <td>Research-backed POV (academic + tour insights)</td>
+                        <td>Workforce enablement framing &amp; rapid prototyping</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="joint-callout">
+                <h4>Joint-Only — Why This Pairing</h4>
+                <p>We are <em>the only pairing</em> that can take a client from sensitivity analysis → reimagined jobs → tech stack action plan → operating model change in one continuous arc.</p>
+                <p>Together we resolve the <em>"scaffolding gap"</em> — most change efforts stop at change management; we change the systemic HR architecture (jobs, structures, comp, data) underneath.</p>
+                <p style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.95rem;"><strong style="color: white;">Co-branded proof:</strong> Reference the live pilot Aon and Slalom are running together (5 Total Rewards roles × 8 levels) — <em>"we're not just proposing this, we're doing it on ourselves."</em></p>
+            </div>
+
+            <div class="visual-note">
+                <strong>Suggested visual:</strong> Single workflow / lifecycle bar — Sensitivity Analysis → Job Reimagination → Tech Stack &amp; Data → Operating Model. Color-coded with each firm's contribution at each stage. <strong>(This is the Slide 42 framework anchor from v3 deck — keep that bone structure, simplify ruthlessly.)</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3 -->
+    <section class="slide" id="slide3">
+        <div class="container">
+            <div class="slide-num">Slide 3 — Where We'd Like to Start with You</div>
+            <h2>"A 30-day shaped engagement to make this real."</h2>
+            <p class="working-title">Don't leave with a hypothetical. Land a concrete first move.</p>
+
+            <div class="intent">
+                <strong>Strategic intent:</strong> Don't leave with a hypothetical. Land a concrete first move that is small enough to say yes to and rich enough to expose value.
+            </div>
+
+            <div class="ladder">
+                <div class="ladder-step">
+                    <span class="ladder-num">1</span>
+                    <div class="timeframe">1–3 weeks</div>
+                    <h4>Diagnostic Anchor</h4>
+                    <p>Run a focused sensitivity analysis on one function — <strong>Total Rewards</strong> is our proven entry point and likely most relevant given the audience's history. Surfaces job-level AI exposure, skill shifts, and tech adequacy.</p>
+                </div>
+                <div class="ladder-step">
+                    <span class="ladder-num">2</span>
+                    <div class="timeframe">1 day</div>
+                    <h4>Joint Workshop</h4>
+                    <p>Aon + Slalom + client team. Translate findings into a near-term action set — what to <strong>reimagine</strong>, what to <strong>retire</strong>, what tech to <strong>deploy or shore up</strong>.</p>
+                </div>
+                <div class="ladder-step">
+                    <span class="ladder-num">3</span>
+                    <div class="timeframe">Modular</div>
+                    <h4>Path Forward</h4>
+                    <p>Modular roadmap — client picks the next 1–2 plays (e.g., redesign comp leveling, deploy a TR-AI co-pilot, restructure the CoE). We co-deliver. Outcomes feed the broader transformation conversation.</p>
+                </div>
+            </div>
+
+            <div class="prompts-box">
+                <h4>Conversation prompts to leave them with — pick 2, audience-tailored</h4>
+                <ul>
+                    <li><strong>AbbVie:</strong> "You ran a Total Rewards AI workshop with us a year ago — where did that thinking land? What would the next mile look like now that AI capabilities have matured?"</li>
+                    <li><strong>United:</strong> "You told us 'not now, later in 2026' last fall — with Workday rolling off, is now the right re-entry?"</li>
+                    <li><strong>CIO / Strategy entry:</strong> "Where in your business are jobs already changing because of AI deployment, and how is HR keeping up with the scaffolding?"</li>
+                    <li><strong>Generic CHRO:</strong> "If we collapsed the 3-pillar model to 2 in your org, what would break first — and what would finally work?"</li>
+                </ul>
+            </div>
+
+            <div class="visual-note">
+                <strong>Suggested visual:</strong> Simple horizontal 3-step ribbon (Diagnostic → Workshop → Roadmap) with timeframes. Bottom-right: small CTA box with the 2 conversation prompts.
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTION NOTES -->
+    <section class="slide slide-notes" id="notes">
+        <div class="container">
+            <div class="slide-num">Production Notes</div>
+            <h2>What it takes to ship</h2>
+
+            <div class="notes-grid">
+                <div class="notes-card">
+                    <h3>Co-branding (per Apr 15)</h3>
+                    <ul>
+                        <li>Use the lock-up + color treatment from the LinkedIn post Julie shared earlier — already approved by both marketing teams.</li>
+                        <li>Don't reopen the branding debate.</li>
+                        <li>Minimum-viable design. Three slides, no busywork from marketing.</li>
+                    </ul>
+                </div>
+                <div class="notes-card">
+                    <h3>What Yousuf still needs from Slalom</h3>
+                    <ul>
+                        <li>Latest version of the working deck from the shared Teams site (current local copy is v3 from Feb 6).</li>
+                        <li>Julie's "Adaptive Organizations for the CHRO" slides — the AI-component pages specifically (referenced Apr 15).</li>
+                        <li>The LinkedIn co-brand example post — link, so design reference matches.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2.5rem;">Tailoring matrix — what changes per variant</h3>
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>CHRO Version</th>
+                        <th>Total Rewards Version</th>
+                        <th>CIO Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Slide 1 provocation</td>
+                        <td>3-pillar collapse</td>
+                        <td>TR is the anchor</td>
+                        <td>Workforce enablement = the missing middle</td>
+                    </tr>
+                    <tr>
+                        <td>Slide 1 proof point</td>
+                        <td>Adaptive Org client example</td>
+                        <td>"6 requests in 6 weeks" stat</td>
+                        <td>Silicon Valley spotty-deployment insight</td>
+                    </tr>
+                    <tr>
+                        <td>Slide 2 emphasis</td>
+                        <td>Operating model + governance</td>
+                        <td>Comp/benefits/data depth</td>
+                        <td>Tech stack + data governance</td>
+                    </tr>
+                    <tr>
+                        <td>Slide 3 entry play</td>
+                        <td>Function-wide diagnostic</td>
+                        <td>TR sensitivity analysis</td>
+                        <td>Tech + workforce co-assessment</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 style="margin-top: 2.5rem;">Account-specific anchor points</h3>
+            <div class="accounts-grid">
+                <div class="account-card">
+                    <h4>AbbVie</h4>
+                    <p><strong>D (CHRO, ex-TR, ex-HRBP)</strong> is primary entry. Reference the year-old global TR AI workshop run by Marinus + Kevin Faiak. Secondary contacts: Linda Ray, Nicholas Donahue (Strategy, ex-McKinsey), Sarah Namm (Enterprise AI under Nicholas).</p>
+                </div>
+                <div class="account-card">
+                    <h4>United</h4>
+                    <p>Slalom relationship-led <strong>(Denise)</strong>. Anchor on the Blue Sky Day TR session from late last year + Workday implementation now winding down.</p>
+                </div>
+                <div class="account-card">
+                    <h4>CDW</h4>
+                    <p>Aon already ran sensitivity analysis. CHRO handed results to BU leaders. Co-pitch could be <em>"next mile"</em> framing.</p>
+                </div>
+            </div>
+
+            <div class="open-decisions">
+                <h3>Open decisions before designer hand-off</h3>
+                <ol>
+                    <li>Do we lead with the 2-pillar provocation or the employee-experience integration as the core POV? <em>(Apr 15: leaning provocation, but verify with Julie.)</em></li>
+                    <li>Is Slide 3's "first move" priced/timed, or framed as exploratory? <em>Recommend exploratory for a 30-min meeting.</em></li>
+                    <li>Logo lock-up order: Aon-Slalom or Slalom-Aon? Keep consistent across all variants.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

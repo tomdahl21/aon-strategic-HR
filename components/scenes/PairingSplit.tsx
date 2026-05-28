@@ -34,8 +34,14 @@ export function PairingSplit({ pairing, id, continueHref }: Props) {
   )
 }
 
+const NAME_TONE: Record<NonNullable<PairingSide['accent']>, string> = {
+  aon: 'text-aon',
+  slalom: 'text-slalom',
+  neutral: 'text-ink',
+}
+
 function PairingColumn({ side, surface }: { side: PairingSide; surface: 'white' | 'paper' }) {
-  const isAon = side.accent === 'aon'
+  const nameTone = NAME_TONE[side.accent ?? 'neutral']
   const surfaceClass = surface === 'white' ? 'bg-white' : 'bg-paper'
   return (
     <div
@@ -52,7 +58,7 @@ function PairingColumn({ side, surface }: { side: PairingSide; surface: 'white' 
       <h3
         className={[
           'm-0 mb-[32px] font-display text-[44px] font-normal leading-[1] tracking-[-0.015em]',
-          isAon ? 'text-aon' : 'text-ink',
+          nameTone,
         ].join(' ')}
       >
         {side.name}
