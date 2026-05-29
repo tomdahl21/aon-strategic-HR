@@ -14,8 +14,10 @@ export function PracticalApplications({ content, id, continueHref }: Props) {
     <Section variant="paper" id={id} continueHref={continueHref}>
       <div className="mb-[80px] grid items-end gap-[clamp(40px,6vw,100px)] [grid-template-columns:1.1fr_0.9fr] max-[760px]:grid-cols-1 max-[760px]:gap-[32px]">
         <div>
-          <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
-          <DisplayHeading className="reveal">
+          <Eyebrow tone="slalom" className="reveal">
+            {content.eyebrow}
+          </Eyebrow>
+          <DisplayHeading tone="light-slalom" className="reveal">
             {content.headline.lead} <em>{content.headline.em1}</em> {content.headline.mid}{' '}
             <em>{content.headline.em2}</em>
           </DisplayHeading>
@@ -31,7 +33,7 @@ export function PracticalApplications({ content, id, continueHref }: Props) {
             key={col.title}
             className="border-r border-rule px-[32px] pb-[48px] pt-[40px] last:border-r-0 max-[1080px]:border-b max-[1080px]:border-r-0 max-[1080px]:last:border-b-0"
           >
-            <span className="mb-[24px] block font-display text-[40px] font-normal leading-none tracking-[-0.02em] text-aon">
+            <span className="mb-[24px] block font-display text-[40px] font-normal leading-none tracking-[-0.02em] text-slalom">
               {col.ordinal}
             </span>
             <h3 className="m-0 mb-[6px] font-display text-[26px] font-normal leading-[1.05] tracking-[-0.01em] text-ink">
@@ -61,7 +63,7 @@ export function PracticalApplications({ content, id, continueHref }: Props) {
         <span>{content.axisLeft}</span>
         <span
           aria-hidden
-          className="mx-[20px] h-[2px] flex-1 bg-[linear-gradient(to_right,rgb(var(--rule)),rgb(var(--aon)))] max-[760px]:hidden"
+          className="mx-[20px] h-[2px] flex-1 bg-[linear-gradient(to_right,rgb(var(--rule)),rgb(var(--slalom-cyan)),rgb(var(--slalom)))] max-[760px]:hidden"
         />
         <span>{content.axisRight}</span>
       </div>

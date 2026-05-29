@@ -18,8 +18,10 @@ export function StakeholderView({ content, id, continueHref, tone = 'paper2' }: 
   return (
     <Section variant={tone} id={id} continueHref={continueHref}>
       <div className="mb-[64px] max-w-[760px]">
-        <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
-        <DisplayHeading className="reveal">
+        <Eyebrow tone="slalom" className="reveal">
+          {content.eyebrow}
+        </Eyebrow>
+        <DisplayHeading tone="light-slalom" className="reveal">
           {content.headline.lead} <em>{content.headline.em1}</em>{' '}
           {content.headline.mid && <>{content.headline.mid} </>}
           {content.headline.em2 && <em>{content.headline.em2}</em>}
@@ -41,7 +43,7 @@ export function StakeholderView({ content, id, continueHref, tone = 'paper2' }: 
               key={stage.name}
               className="bg-paper px-[20px] pb-[20px] pt-[24px]"
             >
-              <div className="font-display text-[12px] uppercase tracking-[0.18em] text-aon">
+              <div className="font-display text-[12px] uppercase tracking-[0.18em] text-slalom">
                 {stage.name}
               </div>
               <div className="mt-[6px] font-display text-[clamp(22px,2.2vw,30px)] font-normal leading-[1] tracking-[-0.01em] text-ink">

@@ -13,8 +13,10 @@ export function OrganizingQuestions({ content, id, continueHref }: Props) {
   return (
     <Section variant="paper" id={id} continueHref={continueHref}>
       <div className="mb-[80px] max-w-[820px]">
-        <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
-        <DisplayHeading className="reveal">
+        <Eyebrow tone="slalom" className="reveal">
+          {content.eyebrow}
+        </Eyebrow>
+        <DisplayHeading tone="light-slalom" className="reveal">
           {content.headline.lead} <em>{content.headline.em1}</em> {content.headline.mid}{' '}
           <em>{content.headline.em2}</em>
         </DisplayHeading>
@@ -29,7 +31,7 @@ export function OrganizingQuestions({ content, id, continueHref }: Props) {
             key={q.num}
             className="bg-paper px-[32px] pb-[40px] pt-[36px]"
           >
-            <div className="mb-[24px] font-display text-[clamp(40px,4vw,56px)] font-normal leading-none tracking-[-0.02em] text-aon">
+            <div className="mb-[24px] font-display text-[clamp(40px,4vw,56px)] font-normal leading-none tracking-[-0.02em] text-slalom">
               {q.num}
             </div>
             <p className="m-0 mb-[14px] font-display text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.15] tracking-[-0.005em] text-ink">

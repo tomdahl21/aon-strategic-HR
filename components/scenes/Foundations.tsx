@@ -9,6 +9,17 @@ type Props = {
   continueHref?: string
 }
 
+/**
+ * Cycled phase tints — lime, cyan, bright Slalom blue. Mirrors the
+ * adoption-arc palette from the Slalom Perspective deck (§20) so the
+ * foundational beat and the journey scene share a visual family.
+ */
+const PHASE_TINTS = [
+  'rgb(var(--slalom-lime))',
+  'rgb(var(--slalom-cyan))',
+  'rgb(var(--slalom-bright))',
+] as const
+
 export function Foundations({ content, id, continueHref }: Props) {
   return (
     <Section variant="ink" tall id={id} continueHref={continueHref}>
@@ -25,12 +36,15 @@ export function Foundations({ content, id, continueHref }: Props) {
       </div>
 
       <div className="reveal grid grid-cols-3 gap-px bg-paper/10 max-[1080px]:grid-cols-1">
-        {content.phases.map((phase) => (
+        {content.phases.map((phase, idx) => (
           <article
             key={phase.ordinal}
             className="bg-ink px-[28px] pb-[40px] pt-[36px]"
           >
-            <div className="mb-[18px] font-display text-[clamp(38px,4vw,56px)] font-normal leading-none tracking-[-0.02em] text-slalom-bright">
+            <div
+              className="mb-[18px] font-display text-[clamp(38px,4vw,56px)] font-normal leading-none tracking-[-0.02em]"
+              style={{ color: PHASE_TINTS[idx] }}
+            >
               {phase.ordinal}
             </div>
             <h3 className="m-0 mb-[20px] font-display text-[clamp(22px,2.2vw,30px)] font-normal leading-[1.05] tracking-[-0.01em] text-paper">

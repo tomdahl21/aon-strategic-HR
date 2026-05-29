@@ -13,8 +13,10 @@ export function AntiPatterns({ content, id, continueHref }: Props) {
   return (
     <Section variant="paper2" id={id} continueHref={continueHref}>
       <div className="mb-[72px] max-w-[760px]">
-        <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
-        <DisplayHeading className="reveal">
+        <Eyebrow tone="slalom" className="reveal">
+          {content.eyebrow}
+        </Eyebrow>
+        <DisplayHeading tone="light-slalom" className="reveal">
           {content.headline.lead} <em>{content.headline.em1}</em>
         </DisplayHeading>
         <p className="reveal max-w-[56ch] font-body text-[clamp(17px,1.4vw,21px)] leading-[1.5] text-slate">
@@ -32,7 +34,7 @@ export function AntiPatterns({ content, id, continueHref }: Props) {
             role="listitem"
             className="bg-paper-2 px-[28px] pb-[36px] pt-[32px] transition-colors duration-[400ms] hover:bg-paper"
           >
-            <div className="mb-[20px] font-body text-[11px] uppercase tracking-[0.18em] text-aon">
+            <div className="mb-[20px] font-body text-[11px] uppercase tracking-[0.18em] text-slalom">
               {String(i + 1).padStart(2, '0')}
             </div>
             <h3 className="m-0 mb-[14px] font-display text-[22px] font-normal leading-[1.1] tracking-[-0.005em] text-ink">

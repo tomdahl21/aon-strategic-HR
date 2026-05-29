@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 
 type Size = 'section' | 'sub'
-type Tone = 'light' | 'dark' | 'dark-slalom'
+type Tone = 'light' | 'light-slalom' | 'dark' | 'dark-slalom'
 
 type Props = {
   /** Heading level. Defaults to h2 — h1 is reserved for the hero. */
@@ -21,6 +21,9 @@ const sizeClass: Record<Size, string> = {
 
 const toneClass: Record<Tone, string> = {
   light: 'text-ink [&_em]:text-aon-deep',
+  // Light bg, Slalom-origin section: italic em in deep Slalom blue rather
+  // than burgundy. Burgundy stays reserved for the AbbVie editorial spine.
+  'light-slalom': 'text-ink [&_em]:text-slalom',
   dark: 'text-paper [&_em]:text-aon',
   // Dark bg, Slalom-origin section: bright blue em so it reads against --ink.
   'dark-slalom': 'text-paper [&_em]:text-slalom-bright',

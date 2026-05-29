@@ -25,6 +25,8 @@
   --aon-deep: 165 0 52; /* Burgundy — italic display emphasis */
   --slalom: 0 70 189; /* Slalom Blue (#0046BD) — kinetic accent, co-equal to Aon Red on light */
   --slalom-bright: 2 123 252; /* Bright Slalom Blue (#027BFC) — emphasis on dark, hover brighten */
+  --slalom-cyan: 41 198 240; /* Slalom Cyan (#29C6F0) — secondary accent for adoption arc */
+  --slalom-lime: 204 224 36; /* Slalom Lime (#CCE024) — kinetic accent, earliest stage on dark */
 }
 
 /* ============================================================

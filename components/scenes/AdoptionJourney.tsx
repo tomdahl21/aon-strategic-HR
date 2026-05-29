@@ -10,13 +10,14 @@ type Props = {
 }
 
 /**
- * Progressive saturation across the four adoption stages, mirroring
- * the MaturityLadder treatment so the dark-section signature pattern
- * carries through.
+ * Lime → cyan → bright blue → bright blue (full). Direct lift of the
+ * adoption-stage saturation arc from Slalom Perspective §20. Stage 4
+ * holds at full slalom-bright rather than dropping to deep slalom so
+ * the gain numeral stays legible against --ink.
  */
 const GAIN_TINTS = [
-  'rgb(var(--slalom-bright) / 0.55)',
-  'rgb(var(--slalom-bright) / 0.75)',
+  'rgb(var(--slalom-lime))',
+  'rgb(var(--slalom-cyan))',
   'rgb(var(--slalom-bright) / 0.9)',
   'rgb(var(--slalom-bright))',
 ] as const

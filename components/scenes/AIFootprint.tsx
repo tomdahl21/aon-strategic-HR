@@ -13,9 +13,11 @@ export function AIFootprint({ content, id, continueHref }: Props) {
   return (
     <Section variant="paper2" id={id} continueHref={continueHref}>
       <div className="mb-[80px] max-w-[760px]">
-        <Eyebrow className="reveal">{content.eyebrow}</Eyebrow>
+        <Eyebrow tone="slalom" className="reveal">
+          {content.eyebrow}
+        </Eyebrow>
 
-        <DisplayHeading className="reveal">
+        <DisplayHeading tone="light-slalom" className="reveal">
           {content.headline.lead} <em>{content.headline.em1}</em> {content.headline.mid}{' '}
           <em>{content.headline.em2}</em>
         </DisplayHeading>
@@ -31,7 +33,7 @@ export function AIFootprint({ content, id, continueHref }: Props) {
             key={col.title}
             className="flex flex-col border-t border-ink pt-[36px]"
           >
-            <span className="mb-[28px] block font-body text-[11px] uppercase tracking-[0.18em] text-aon">
+            <span className="mb-[28px] block font-body text-[11px] uppercase tracking-[0.18em] text-slalom">
               {col.ordinal}
             </span>
             <h3 className="m-0 mb-[28px] font-display text-[clamp(28px,2.6vw,40px)] font-normal leading-[1] tracking-[-0.01em] text-ink">
